@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 public class DB_ac {
     //数据库账户信息表查找函数
@@ -20,14 +21,18 @@ public class DB_ac {
             Cursor cursor = db.rawQuery("select * from ac_pw",null);
             while(cursor.moveToNext())
             {
-                @SuppressLint("Range") int _id = cursor.getInt(cursor.getColumnIndex("_id"));
+                //@SuppressLint("Range") int _id = cursor.getInt(cursor.getColumnIndex("_id"));
                 @SuppressLint("Range") String ac = cursor.getString(cursor.getColumnIndex("accout"));
                 if(ac.equals(accout))
                 {
+                    Toast toast2 = Toast.makeText(activity,"进入"+ac,Toast.LENGTH_SHORT);
+                    toast2.show();
                     @SuppressLint("Range") String pw = cursor.getString(cursor.getColumnIndex("password"));
-//                    Toast toast = Toast.makeText(MainActivity.this,"密码为："+pw,Toast.LENGTH_SHORT);
-//                    //toast.setGravity(Gravity.TOP | Gravity.LEFT, 200, 500);//设置位置
-//                    toast.show();//弹出提示
+                    //Toast toast = Toast.makeText(activity,"密码为："+pw,Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(activity,"text"+pw,Toast.LENGTH_SHORT);
+                    System.out.println(pw);
+                    //toast.setGravity(Gravity.TOP | Gravity.LEFT, 200, 500);//设置位置
+                    toast.show();//弹出提示
                     result = pw;  //返回密码
                     break;
                 }
@@ -36,7 +41,8 @@ public class DB_ac {
 //                    Toast toast = Toast.makeText(MainActivity.this,"免密失败，请先注册账号",Toast.LENGTH_SHORT);
 //                    toast.setGravity(Gravity.TOP | Gravity.LEFT, 200, 500);//设置位置
 //                    toast.show();//弹出提示
-                    result = "0";
+                    result = "";    //没有查询到密码返回空
+
                 }
 
                 //Log.d("嗯嗯","query: _id:"+_id + "accout"+ ac);
