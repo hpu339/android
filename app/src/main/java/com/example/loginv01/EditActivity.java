@@ -63,6 +63,7 @@ public class EditActivity extends AppCompatActivity {
                     Toast toast = Toast.makeText(EditActivity.this,"保存成功",Toast.LENGTH_SHORT);
                     //toast.setGravity(Gravity.TOP | Gravity.LEFT, 200, 500);//设置位置
                     toast.show();//弹出提示
+
                     //跳转
                     Intent intent = new Intent(EditActivity.this, notepadActivity.class);   //创建
                     startActivity(intent);

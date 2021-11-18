@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.view.Gravity;
 import android.widget.Toast;
 
+import com.example.loginv01.entity.list_data;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -36,6 +39,7 @@ public class DB_con {
             Cursor cursor = db.rawQuery("select * from con",null);
             while(cursor.moveToNext())
             {
+                //移动浮标
                 @SuppressLint("Range") int _id = cursor.getInt(cursor.getColumnIndex("_id"));
                 @SuppressLint("Range") String title = cursor.getString(cursor.getColumnIndex("title"));
                 if(Title.equals(title))
@@ -71,6 +75,31 @@ public class DB_con {
         return newArr;
     }
 
+    public static void updata(Activity activity,List<list_data> books)
+    {
+        SQLiteOpenHelper helper = MySqliteOpenHelper.getInstance(activity);
+        //datebase 文件的创建靠下面这句话
+        SQLiteDatabase db = helper.getReadableDatabase();
+        //List<list_data> books = new ArrayList<>();
+
+        if (db.isOpen())
+        {
+            Cursor cursor = db.rawQuery("select * from con",null);
+            while(cursor.moveToNext())
+            {
+                @SuppressLint("Range") String time = cursor.getString(cursor.getColumnIndex("time"));
+                @SuppressLint("Range") String title = cursor.getString(cursor.getColumnIndex("title"));
+                list_data list = new list_data(title,time);
+                books.add(list);
+            }
+        }
+        else
+        {
+            Toast.makeText(activity,"列表更新函数出现错误",Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
     //插入函数
     static String insert(Activity activity,String title,String content)
     {
@@ -78,15 +107,18 @@ public class DB_con {
         //datebase 文件的创建靠下面这句话
         SQLiteDatabase db = helper.getWritableDatabase();
         //获取系统时间
-        Date currentTime = Calendar.getInstance().getTime();
-
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
+        //Date currentTime = Calendar.getInstance().getTime();
+        Date currentTime = new Date(System.currentTimeMillis());
         if(db.isOpen())
         {
-            String sql = "insert into con" + "(title,time,content)values('" + title + "','" + currentTime + "','"+ content + "')";
+            String sql = "insert into con" + "(title,time,content)values('" + title + "','" + simpleDateFormat.format(currentTime) + "','"+ content + "')";
             //String sql = "insert into ac_pw(accout) values('张三')";
             db.execSQL(sql);
         }
         db.close();
         return "ok";
     }
+
+
 }

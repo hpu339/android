@@ -77,10 +77,11 @@ public class MainActivity extends AppCompatActivity {
                 else if (password.equals(""))   //免密登录
                 {
                     String pw = DB_ac.query(MainActivity.this,accout);
+                    //Toast toast1 = Toast.makeText(MainActivity.this,"text"+pw,Toast.LENGTH_SHORT);
                     //通过数据库查找密码
                     Toast toast;//弹出提示
                         //设置位置
-                    if(pw.equals(""))   //密码判空
+                    if(pw.equals(""))   //没有查询到密码返回空
                     {
                         toast = Toast.makeText(MainActivity.this, "免密登录失败，请注册账号", Toast.LENGTH_SHORT);
                     }
@@ -91,10 +92,10 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent = new Intent(MainActivity.this, notepadActivity.class);   //创建
                         startActivity(intent);
                     }
-                    toast.setGravity(Gravity.TOP | Gravity.LEFT, 200, 500);//设置位置
+                    //toast.setGravity(Gravity.TOP | Gravity.LEFT, 200, 500);//设置位置
                     toast.show();//弹出提示
                 }
-                else
+                else    //有账号有密码
                 {
                     String pw = DB_ac.query(MainActivity.this,accout);
                     Toast toast;

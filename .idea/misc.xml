@@ -13,6 +13,8 @@
         <entry key="..\:/android_text/login/app/src/main/res/drawable/ic_menu_daiban.xml" value="0.3536458333333333" />
         <entry key="..\:/android_text/login/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.3536458333333333" />
         <entry key="..\:/android_text/login/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.3536458333333333" />
+        <entry key="..\:/android_text/login/app/src/main/res/drawable/listShape.xml" value="0.3536458333333333" />
+        <entry key="..\:/android_text/login/app/src/main/res/drawable/list_shape.xml" value="0.3536458333333333" />
         <entry key="..\:/android_text/login/app/src/main/res/drawable/note_recoder.xml" value="0.3536458333333333" />
         <entry key="..\:/android_text/login/app/src/main/res/drawable/side_nav_bar.xml" value="0.3536458333333333" />
         <entry key="..\:/android_text/login/app/src/main/res/drawable/笔记，记录.xml" value="0.3536458333333333" />
@@ -23,6 +25,7 @@
         <entry key="..\:/android_text/login/app/src/main/res/layout/activity_regetist.xml" value="0.24547101449275363" />
         <entry key="..\:/android_text/login/app/src/main/res/layout/activity_test1.xml" value="0.3333333333333333" />
         <entry key="..\:/android_text/login/app/src/main/res/layout/app_bar_notepad.xml" value="0.16" />
+        <entry key="..\:/android_text/login/app/src/main/res/layout/bookitem.xml" value="0.3333333333333333" />
         <entry key="..\:/android_text/login/app/src/main/res/layout/content_notepad.xml" value="0.33" />
         <entry key="..\:/android_text/login/app/src/main/res/layout/fragment_daiban.xml" value="0.3333333333333333" />
         <entry key="..\:/android_text/login/app/src/main/res/layout/fragment_gallery.xml" value="0.2341485507246377" />

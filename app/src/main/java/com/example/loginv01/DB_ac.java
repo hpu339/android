@@ -25,14 +25,14 @@ public class DB_ac {
                 @SuppressLint("Range") String ac = cursor.getString(cursor.getColumnIndex("accout"));
                 if(ac.equals(accout))
                 {
-                    Toast toast2 = Toast.makeText(activity,"进入"+ac,Toast.LENGTH_SHORT);
-                    toast2.show();
+//                    Toast toast2 = Toast.makeText(activity,"进入"+ac,Toast.LENGTH_SHORT);
+//                    toast2.show();
                     @SuppressLint("Range") String pw = cursor.getString(cursor.getColumnIndex("password"));
                     //Toast toast = Toast.makeText(activity,"密码为："+pw,Toast.LENGTH_SHORT);
-                    Toast toast = Toast.makeText(activity,"text"+pw,Toast.LENGTH_SHORT);
+//                    Toast toast = Toast.makeText(activity,"text"+pw,Toast.LENGTH_SHORT);
                     System.out.println(pw);
                     //toast.setGravity(Gravity.TOP | Gravity.LEFT, 200, 500);//设置位置
-                    toast.show();//弹出提示
+//                    toast.show();//弹出提示
                     result = pw;  //返回密码
                     break;
                 }
