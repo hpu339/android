@@ -19,7 +19,7 @@ import java.util.List;
 
 public class listAdapter extends BaseAdapter {
 
-    //通讯录数据
+    //列表数据
     private List<list_data> pdata = new ArrayList<list_data>();
 
     //上下文

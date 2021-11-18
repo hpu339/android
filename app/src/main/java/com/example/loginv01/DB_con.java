@@ -108,7 +108,7 @@ public class DB_con {
         SQLiteDatabase db = helper.getWritableDatabase();
         //获取系统时间
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
-        //Date currentTime = Calendar.getInstance().getTime();
+        //对时间格式化
         Date currentTime = new Date(System.currentTimeMillis());
         if(db.isOpen())
         {
