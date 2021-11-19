@@ -1,5 +1,6 @@
 package com.example.loginv01.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.loginv01.DB_con;
+import com.example.loginv01.EditActivity;
 import com.example.loginv01.MainActivity;
 import com.example.loginv01.R;
 import com.example.loginv01.adapter.listAdapter;
@@ -29,7 +31,7 @@ import com.example.loginv01.entity.list_data;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements AdapterView.OnItemClickListener {
 
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
@@ -40,8 +42,8 @@ public class HomeFragment extends Fragment {
     //创建适配器
     private listAdapter myAdapter; //定义适配器
     //定义数组，用于存储记事本数据
-    private String[] titles = {"test1","test2","test3"};
-    private String[] times = {"2021.11.01","2021.11.02","2021.11.03"};
+//    private String[] titles = {"test1","test2","test3"};
+//    private String[] times = {"2021.11.01","2021.11.02","2021.11.03"};
 
     //定义一个列表作为数据源
     private List<list_data> books = new ArrayList<>();
@@ -65,6 +67,8 @@ public class HomeFragment extends Fragment {
         //Toast.makeText(getActivity(),"后面"+books.size(),Toast.LENGTH_SHORT).show();
         //books = null;//清空列表防止重复加载
         mylistview.setAdapter(myAdapter);   //加载适配器
+        //监听事件
+        mylistview.setOnItemClickListener(this);
 
 
 //        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
@@ -82,38 +86,30 @@ public class HomeFragment extends Fragment {
 //            }
 //
 //        });
-//        //点击监听
-//        mylistview1.setOnItemClickListener(new AdapterView.OnItemClickListener()
-//        {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-//            {
-//                TextView tv = (TextView)view;
-//                Toast.makeText(getActivity(), tv.getText()+"", Toast.LENGTH_SHORT).show();
-//                //弹窗
-//            }
-//        });
-
+        //点击监听
         return root;
+    }
+
+    //实现点击方法。statue等于1
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+       //获取点击的条目对象
+       list_data list_data = books.get(position);
+        Toast.makeText(getActivity(),"点击的第"+position+list_data.getTitle(),Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getActivity(), EditActivity.class);  //创建对象
+        String postr = String.valueOf(position+1);
+        intent.putExtra("id",postr);    //添加数据
+        intent.putExtra("title",list_data.getTitle());
+        intent.putExtra("statue","1");
+        startActivity(intent);  //跳转
     }
 
     //初始化数据
     private void initDataBooks()
     {
         books.clear();//全部清除，防止累加
-//        for (int i = 0; i< titles.length;i++)
-//        {
-//            //新建list_data对象，存放标题和时间
-//            list_data list = new list_data(titles[i],times[i]);
-//            //将数据加入到数据列表中
-//            //books.clear();//全部清除，防止累加
-//            books.add(list);
-//            //Toast.makeText(getActivity(),"内容"+books.get(i),Toast.LENGTH_SHORT).show();
-//
-//        }
         DB_con.updata(getActivity(),books);
-
-        Toast.makeText(getActivity(),"长度"+books.size(),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(),"长度"+books.size(),Toast.LENGTH_SHORT).show();
     }
 
     @Override

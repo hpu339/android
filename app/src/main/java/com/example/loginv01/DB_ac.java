@@ -44,10 +44,8 @@ public class DB_ac {
                     result = "";    //没有查询到密码返回空
 
                 }
-
                 //Log.d("嗯嗯","query: _id:"+_id + "accout"+ ac);
             }
-
             cursor.close();
         }
         db.close();

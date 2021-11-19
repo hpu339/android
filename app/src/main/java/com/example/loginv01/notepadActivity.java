@@ -42,6 +42,7 @@ public class notepadActivity extends AppCompatActivity {
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
                 Intent intent = new Intent(notepadActivity.this, EditActivity.class);   //创建
+                intent.putExtra("statue","0");
                 startActivity(intent);
             }
         });
