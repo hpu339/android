@@ -3,6 +3,20 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('E:\\android_text\\key.jks')
+            storePassword '961123'
+            keyAlias 'key'
+            keyPassword '961123'
+        }
+        release {
+            storeFile file('E:\\android_text\\key.jks')
+            storePassword '961123'
+            keyAlias 'key'
+            keyPassword '961123'
+        }
+    }
     compileSdk 31
 
     defaultConfig {
@@ -10,7 +24,8 @@ android {
         minSdk 23
         targetSdk 30
         versionCode 1
-        versionName "1.0"
+        versionName "1.1"
+        flavorDimensions "xxx"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -21,6 +36,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    android.applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                //这里修改apk文件名
+                def fileName = "记事本"+versionName+".apk"
+                outputFileName = fileName
+            }
+        }
+    }
+
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

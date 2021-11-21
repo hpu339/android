@@ -95,7 +95,7 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemClickLis
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
        //获取点击的条目对象
        list_data list_data = books.get(position);
-        Toast.makeText(getActivity(),"点击的第"+position+list_data.getTitle(),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(),"点击的第"+position+list_data.getTitle(),Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getActivity(), EditActivity.class);  //创建对象
         String postr = String.valueOf(position+1);
         intent.putExtra("id",postr);    //添加数据

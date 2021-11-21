@@ -83,11 +83,11 @@ public class EditActivity extends AppCompatActivity {
                     else
                     {
                         DB_con.edit(EditActivity.this, finalId,text,title);
-                        Toast.makeText(EditActivity.this,"finalId:"+finalId,Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(EditActivity.this,"finalId:"+finalId,Toast.LENGTH_SHORT).show();
                     }
                     Toast toast = Toast.makeText(EditActivity.this,"保存成功",Toast.LENGTH_SHORT);
                     toast.show();//弹出提示
-                    Toast.makeText(EditActivity.this,"状态值："+statue,Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(EditActivity.this,"状态值："+statue,Toast.LENGTH_SHORT).show();
                     //toast.setGravity(Gravity.TOP | Gravity.LEFT, 200, 500);//设置位置
 
                     //跳转

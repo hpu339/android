@@ -83,11 +83,11 @@ public class DB_con {
             db.execSQL(sql1);
             String sql2 = "update con set title= '"+title+"' where _id="+id;
             db.execSQL(sql2);
-            Toast.makeText(activity,"修改成功",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(activity,"修改成功",Toast.LENGTH_SHORT).show();
         }
         else
         {
-            Toast.makeText(activity,"修改失败",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(activity,"修改失败",Toast.LENGTH_SHORT).show();
         }
     }
 
